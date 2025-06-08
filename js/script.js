@@ -188,3 +188,12 @@ function asideSectionTogglerBtn()
         allSection[i].classList.toggle('open');
     }
 }
+  document.addEventListener("DOMContentLoaded", function () {
+    const navToggler = document.querySelector(".nav-toggler");
+    const aside = document.querySelector(".aside");
+
+    navToggler.addEventListener("click", function () {
+      aside.classList.toggle("open"); // Cambia la visibilidad
+    });
+  });
+
