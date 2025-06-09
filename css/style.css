@@ -476,7 +476,7 @@ select {
 
 .blog-info {
     padding: 20px;
-    padding-top: 30px; /* Aumenta el padding-top para dejar espacio al blog-date superpuesto */
+    padding-top: px; /* Aumenta el padding-top para dejar espacio al blog-date superpuesto */
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -570,7 +570,7 @@ body {
         font-size: 0.9em;
     }
     .blog-info {
-        padding: 15px;
+        padding: 15px 10px !important; /* Reduce espacio interno */
         padding-top: 25px; /* Ajusta el padding-top para móviles */
     }
     .project-button {
@@ -1299,8 +1299,11 @@ body {
 }
 
 .blog .blog-item-inner .blog-info {
-    padding: 30px 15px;
+    padding: 15px 10px !important; /* Reduce espacio interno */
     background-color: #f0efeb;
+    .blog .blog-item-inner .blog-info .blog-title {
+    font-size: calc(14px + 0.5vw); /* Tamaño que se ajusta según el ancho de la pantalla */
+}
 }
 
 .blog .blog-item-inner .blog-info .blog-title {
