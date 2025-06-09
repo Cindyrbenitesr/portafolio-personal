@@ -555,6 +555,7 @@ body {
         align-items: center;
         gap: 25px;
         padding: 15px;
+        height: 1%;
     }
     .blog-item {
         width: 90%;
@@ -1012,6 +1013,12 @@ body {
 .portfolio .portfolio-item.show {
     display: block;
     animation: showItem 0.5s ease;
+}
+
+.portfolio-description {
+    text-align: center;
+    margin: 20px;
+    font-weight: bold;
 }
 
 @keyframes showItem {
