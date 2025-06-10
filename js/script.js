@@ -17,7 +17,9 @@ window.addEventListener('load', function(){
 
 // Portfolio Item Filter
 
-
+const filterContainer = document.querySelector('.portfolio-filter'),
+    filterBtns = filterContainer.children,
+    totalFilterBtn = filterBtns.length,
     portfolioItems = document.querySelectorAll('.portfolio-item'),
     totalPortfolioItem = portfolioItems.length;
     
@@ -154,26 +156,23 @@ function updateNav(element)
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  const toggler = document.querySelector('.style-switcher-toggler');
-  const switcher = document.querySelector('.style-switcher');
-
-  if (toggler && switcher) {
-    toggler.addEventListener('click', function () {
-      switcher.classList.toggle('open');
-    });
-  }
-
-  // otros scripts aquí...
+document.querySelector('.hire-me').addEventListener('click', function(){
+    const sectionIndex = this.getAttribute('data-section-index');
+    addBackSectionClass(sectionIndex);
+    showSection(this);
+    updateNav(this);
+    removeBackSectionClass();
 });
 
-function showSection(element) {
-  const target = document.querySelector(element.getAttribute("href"));
-  if (target) {
-    target.classList.add("active");
-  } else {
-    console.warn("No se encontró la sección:", element.getAttribute("href"));
-  }
+function showSection(element) 
+{
+    for (let i = 0; i < totalSection; i++) {
+        allSection[i].classList.remove('active');
+    }
+
+    const target = element.getAttribute('href').split('#')[1];
+
+    document.querySelector('#'+target).classList.add('active');
 }
 
 const navTogglerBtn = document.querySelector('.nav-toggler'),
