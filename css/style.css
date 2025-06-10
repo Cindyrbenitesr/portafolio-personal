@@ -620,9 +620,9 @@ body {
 }
 
 .home .intro img {
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
+    height: 80p;
+    width: 150px;
+    border-radius: 30%;
     display: inline-block;
     border: 8px solid #ffffff;
 }
