@@ -37,9 +37,8 @@
 
 <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-  <div class="preloader">
+ <div class="preloader">
     <div class="loader">
-
     </div>
   </div>
   <div class="main-container">
@@ -72,8 +71,32 @@
       <section class="home section active" id="home">
         <div class="container">
           <div class="intro">
-           <img src="images/ross.png" alt="Imagen" class="responsive-img">
-            <h1>Cindy Rosmery Benítez Ramírez</h1>
+           <title>Foto Profesional</title>
+  <style>
+    .profile-img {
+      width: 200px; /* Ajusta el tamaño según necesites */
+      height: auto;
+      border: 4px solid #7a91c9; /* Borde celeste neón */
+      border-radius: 50%; /* Redondeada (puedes quitarlo si prefieres cuadrada) */
+      box-shadow: 0 0 20px #7a91c9; /* Efecto de brillo neón */
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      display: block;
+      margin: 40px auto; /* Centrada */
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05); /* Zoom suave al pasar el cursor */
+    }
+  </style>
+</head>
+<body>
+
+  <img src="images/ross.png" alt="Imagen" class="profile-img">
+
+</body>
+</html>
+            <h1>Cindy Benítez </h1>
             <p>Transformar ideas en experiencias digitales e intuitivas y funcionales.</p>
             <span class="iTyped"></span>
             <div class="social-links">
@@ -106,12 +129,12 @@
                 <div class="personal-info padd-15">
                   <div class="row">
                     <div class="info-item padd-15">
-                       <h6 style="margin-top: 0; color: #000; font-size: 1.2em; border-bottom: 1px solid #00BFFF; padding-bottom: 5px;">Mis Intereses:</h6>
+                       <h6 style="margin-top: 0; color: #000; font-size: 1.2em; border-bottom: 1px solid #7a91c9; padding-bottom: 5px;">Mis Intereses:</h6>
                        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
-                        <label style="display: inline-flex; align-items: center; padding: 8px 12px; border: 1px solid #00BFFF; border-radius: 5px; background-color: #D0D0E7; color: #000; font-weight: bold;">
-                         <input type="checkbox" value="Electronica" checked disabled style="margin-right: 5px;"> Electrónica
+                        <label style="display: inline-flex; align-items: center; padding: 8px 12px; border: 1px solid #7a91c9; border-radius: 5px; background-color: #d2d1e9; color: #000; font-weight: bold;">
+                         <input type="checkbox" value="Electronica" checked disabled style="margin-right: 5px;"> Figma
                         </label>
-                        <label style="display: inline-flex; align-items: center; padding: 8px 12px; border: 1px solid #00BFFF; border-radius: 5px; background-color: #D0D0E7; color: #000; font-weight: bold;">
+                        <label style="display: inline-flex; align-items: center; padding: 8px 12px; border: 1px solid #7a91c9; border-radius: 5px; background-color: #d2d1e9; color: #000; font-weight: bold;">
                          <input type="checkbox" value="Diseño UI/UX" checked disabled style="margin-right: 5px;"> Diseño UI/UX
                         </label>
                         </div>
@@ -631,18 +654,27 @@
     setTimeout(() => {
       messageBox.style.display = "none";
     }, 5000); // Ocultar después de 5 segundos
-    // Esperar a que el DOM esté completamente cargado
-  document.addEventListener("DOMContentLoaded", function () {
+  }
+
+  // Código para el botón de menú
+  document.addEventListener("DOMContentLoaded", function() {
     const navToggler = document.querySelector(".nav-toggler");
     const aside = document.querySelector(".aside");
+    const navLinks = document.querySelectorAll(".nav a");
 
-    navToggler.addEventListener("click", function () {
-      aside.classList.toggle("open"); // Cambia la visibilidad
+    navToggler.addEventListener("click", function() {
+      aside.classList.toggle("open");
+      navToggler.classList.toggle("open");
+    });
+
+    // Cerrar menú al hacer clic en un enlace (para móviles)
+    navLinks.forEach(link => {
+      link.addEventListener("click", function() {
+        if (window.innerWidth <= 991) {
+          aside.classList.remove("open");
+          navToggler.classList.remove("open");
+        }
+      });
     });
   });
-}
 </script>
-
-</body>
-
-</html>

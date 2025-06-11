@@ -72,7 +72,30 @@
       <section class="home section active" id="home">
         <div class="container">
           <div class="intro">
-           <img src="images/ross.png" alt="Image" class="responsive-img">
+           <style>
+    .profile-img {
+      width: 200px; /* Ajusta el tamaño según necesites */
+      height: auto;
+      border: 4px solid #7a91c9; /* Borde celeste neón */
+      border-radius: 50%; /* Redondeada (puedes quitarlo si prefieres cuadrada) */
+      box-shadow: 0 0 20px #7a91c9; /* Efecto de brillo neón */
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      display: block;
+      margin: 40px auto; /* Centrada */
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05); /* Zoom suave al pasar el cursor */
+    }
+  </style>
+</head>
+<body>
+
+  <img src="images/ross.png" alt="Imagen" class="profile-img">
+
+</body>
+</html>
             <h1>Cindy Rosmery Benítez Ramírez</h1>
             <p>Transform ideas into intuitive and functional digital experiences.</p>
             <span class="iTyped"></span>
@@ -601,7 +624,7 @@
   const messageBox = document.getElementById("form-message");
 
   form.addEventListener("submit", async (e) => {
-    e.preventDefault(); // Prevents page reload
+    e.preventDefault(); // Evita recargar la página
 
     const formData = new FormData(form);
 
@@ -615,15 +638,15 @@
       });
 
       if (response.ok) {
-        showMessage("Thank you! Your message has been sent successfully.", "success");
+        showMessage("¡Gracias! Tu mensaje ha sido enviado correctamente.", "success");
         form.reset();
       } else {
         const data = await response.json();
-        let errorMsg = data.errors?.[0]?.message || "An error occurred while sending the message.";
+        let errorMsg = data.errors?.[0]?.message || "Ocurrió un error al enviar el mensaje.";
         showMessage(errorMsg, "error");
       }
     } catch (error) {
-      showMessage("Connection error. Please try again.", "error");
+      showMessage("Error de conexión. Inténtalo de nuevo.", "error");
     }
   });
 
@@ -635,19 +658,28 @@
 
     setTimeout(() => {
       messageBox.style.display = "none";
-    }, 5000); // Hide after 5 seconds
-    // Wait for the DOM to be fully loaded
-  document.addEventListener("DOMContentLoaded", function () {
+    }, 5000); // Ocultar después de 5 segundos
+  }
+
+  // Código para el botón de menú
+  document.addEventListener("DOMContentLoaded", function() {
     const navToggler = document.querySelector(".nav-toggler");
     const aside = document.querySelector(".aside");
+    const navLinks = document.querySelectorAll(".nav a");
 
-    navToggler.addEventListener("click", function () {
-      aside.classList.toggle("open"); // Toggles visibility
+    navToggler.addEventListener("click", function() {
+      aside.classList.toggle("open");
+      navToggler.classList.toggle("open");
+    });
+
+    // Cerrar menú al hacer clic en un enlace (para móviles)
+    navLinks.forEach(link => {
+      link.addEventListener("click", function() {
+        if (window.innerWidth <= 991) {
+          aside.classList.remove("open");
+          navToggler.classList.remove("open");
+        }
+      });
     });
   });
-}
 </script>
-
-</body>
-
-</html>
